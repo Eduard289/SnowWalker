@@ -1,123 +1,54 @@
-/* IMPORTAR FUENTE CARDO */
 @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap');
 
-/* 1. RESET Y ESTILOS GLOBALES */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
 
 body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background-color: #e5e7eb;
-  font-family: 'Cardo', serif; /* Aplicamos Cardo a todo el documento */
-  -ms-scroll-chaining: none;
-  overscroll-behavior: none;
+  font-family: 'Cardo', serif;
   overflow: hidden;
 }
 
-/* 2. CONTENEDOR DEL JUEGO */
+/* --- ELIMINAR BOTONES ANTIGUOS --- */
+/* Esto oculta cualquier cosa que el JS intente dibujar como tutorial */
+.tutorial-keys, 
+.mobile-tutorial, 
+.tutorial-wrapper, 
+.wasd-keys {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* --- CONTENEDOR 3D --- */
 .canvas-wrapper {
   width: 100vw;
   height: 100dvh;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
-/* 3. TUTORIAL MÓVIL */
-.mobile-tutorial {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  background: rgba(255, 255, 255, 0.58);
-  border-radius: 16px;
-  backdrop-filter: blur(12.7px);
-  -webkit-backdrop-filter: blur(12.7px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 20px;
-  width: 80%;
-  max-width: 300px;
-  color: #444;
-  z-index: 10;
-}
-
-/* 4. TUTORIAL ESCRITORIO (BOTONES TRANSPARENTES) */
-.tutorial-keys {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 80px;
-  z-index: 10;
-}
-
-.tutorial-keys span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 48px;
-  height: 45px;
-  border-radius: 5px;
-  background-color: #fff;
-  color: transparent; /* Letras invisibles */
-  border-top: 1px solid #cccccc;
-  box-shadow: 0px 3px 0px 2px #cccccc;
-}
-
-.tutorial-keys section {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  place-items: center;
-  grid-gap: 5px;
-  width: 168px;
-  height: 112px;
-}
-
-.tutorial-keys section > span:nth-child(1) { grid-column: 2; grid-row: 1; }
-.tutorial-keys section > span:nth-child(2) { grid-column: 1; grid-row: 2; }
-.tutorial-keys section > span:nth-child(3) { grid-column: 2; grid-row: 2; }
-.tutorial-keys section > span:nth-child(4) { grid-column: 3; grid-row: 2; }
-
-/* 5. FIRMA DEL AUTOR (JOSE LUIS ASENJO + INSTRUCCIÓN) */
+/* --- TU FIRMA (ESTILO CARDO) --- */
 .author-container {
   position: fixed;
-  bottom: 25px;
-  left: 25px;
-  z-index: 100;
-  pointer-events: none; /* No interfiere con el ratón */
+  bottom: 30px;
+  left: 30px;
+  z-index: 9999; /* Para que esté por encima de todo */
+  pointer-events: none;
 }
 
 .author-name {
-  color: #333;
+  color: #222;
   font-family: 'Cardo', serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  opacity: 0.9;
 }
 
 .author-instruction {
-  color: #666;
+  color: #555;
   font-family: 'Cardo', serif;
-  font-size: 0.9rem;
-  font-style: italic; /* Toque elegante en cursiva */
-  margin-top: 2px;
-  opacity: 0.8;
+  font-size: 1rem;
+  font-style: italic;
+  margin-top: 4px;
 }
